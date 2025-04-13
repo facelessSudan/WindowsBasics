@@ -52,7 +52,7 @@ To compile the injector, you will need a C compiler like minGW GCC or Microsoft 
 5. Verifying that the DLL was loaded succesfully.
 
 **caveat**
-This method is reliable but more detectable by security software.
+-This method is reliable but more detectable by security software.
 
 **QueueUserAPC (APC)**
 The QueueUserAPC method works by:
@@ -62,8 +62,8 @@ The QueueUserAPC method works by:
 4. Queuing  an APC to each thread to call LoadLibraryA
 5. Verifying that the DLL was loaded succesfully.
 
-*notabene*
-this method is more stealthy as it doesn't create new threads, but requires the target thread to enter an alertable state to trigger the DLL loading.
+**N/B**
+-This method is more stealthy as it doesn't create new threads, but requires the target thread to enter an alertable state to trigger the DLL loading.
 
 # Logging
 The injector uses colored console output to provide clear logging:
