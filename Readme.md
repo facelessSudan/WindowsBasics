@@ -77,7 +77,7 @@ This tool is intended for educational purposes, debugging, and legitimate softwa
 Misuse of this tool may violate computer security laws and cybersecurity laws put in place in your counrty.
 Always ensure you have proper authorization before injecting DLLs into processes you don't own.
 
-# Extentions
+# Extensions
 The injector can be extended to support additional injection methods, and therefor its open for extention.
 Meethods for extension includes but not limited to:
     - Manual Mapping: Implementing custom PE loader to manually map the DLL.
