@@ -51,8 +51,8 @@ To compile the injector, you will need a C compiler like minGW GCC or Microsoft 
 4. Waiting for the thread to finish execution (with timeout)
 5. Verifying that the DLL was loaded succesfully.
 
-*caveat*
-This method id reliable but more detectable by security software.
+**caveat**
+This method is reliable but more detectable by security software.
 
 **QueueUserAPC (APC)**
 The QueueUserAPC method works by:
