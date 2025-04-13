@@ -29,7 +29,7 @@ To compile the injector, you will need a C compiler like minGW GCC or Microsoft 
 
 # Usage
 
-`hawkeye.exe <method> <process_name> <dll_path> [ dll_path2 ... ]
+`hawkeye.exe <method> <process_name> <dll_path> [ dll_path2 ... ]`
 
 # Arguments:
 - method: Injection method to use
