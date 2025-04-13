@@ -44,4 +44,51 @@ To compile the injector, you will need a C compiler like minGW GCC or Microsoft 
   - Inject multiple DLLs using QueuesUseAPC hawkeye.exe apc explorer.exe C:\path\to\dll1.dll C:\path\to\dll2.dll
 
 # Injection Method Details
-**CreateRemoteThread (**
+**CreateRemoteThread (CRT)**
+1. Allocating memory in the target process.
+2. Writing the DLL path to the allocated memory
+3. Creating a remote thread that calls *LoadLibraryA* with the DLL path.
+4. Waiting for the thread to finish execution (with timeout)
+5. Verifying that the DLL was loaded succesfully.
+
+*caveat*
+This method id reliable but more detectable by security software.
+
+**QueueUserAPC (APC)**
+The QueueUserAPC method works by:
+1. Allocating memory in the target process.
+2. Writing the DLL path to the allocated memory.
+3. Finding all threads in the target process.
+4. Queuing  an APC to each thread to call LoadLibraryA
+5. Verifying that the DLL was loaded succesfully.
+
+*notabene*
+this method is more stealthy as it doesn't create new threads, but requires the target thread to enter an alertable state to trigger the DLL loading.
+
+# Logging
+The injector uses colored console output to provide clear logging:
+[DEBUG]: Blue - Detailed debugging information
+[INFO]: Green - General information messages
+[WARN]: Yellow - warning messsages that don't prevent operation
+[ERROR]: Red - Indicate failure.
+
+# Security Considerations
+This tool is intended for educational purposes, debugging, and legitimate software development tasks.
+Misuse of this tool may violate computer security laws and cybersecurity laws put in place in your counrty.
+Always ensure you have proper authorization before injecting DLLs into processes you don't own.
+
+# Extentions
+The injector can be extended to support additional injection methods, and therefor its open for extention.
+Meethods for extension includes but not limited to:
+    - Manual Mapping: Implementing custom PE loader to manually map the DLL.
+    - Thread Hijacking: Suspending an existing thread and modifying its context
+    - SetWindowsHookEx: Using Windows hook for code injection.
+    -RtlCreatUserThread/NtCreateThreadEx: Using undocumented NT APIs.
+
+# License
+This project is provides for educational purposes only. Use at your own risk.
+
+# Disclaimer:
+The author is not responsible for any misuse or damage caused by the software. Am also a leaner experimenting as I develop. 
+Use it on systems that you own
+    
